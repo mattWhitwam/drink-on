@@ -7,16 +7,16 @@
 package za.co.dwarfsun.drink.on.domain;
 
 import java.io.Serializable;
-import java.util.List;
-import javax.persistence.CascadeType;
+//import java.util.List;
+//import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+//import javax.persistence.JoinColumn;
+//import javax.persistence.OneToMany;
 
 /**
  *
@@ -34,6 +34,9 @@ public class User implements Serializable {
     private String email;
     @Embedded
     private UserDetails details;
+
+    public User() {
+    }
     
     private User(Builder builder) {
         id = builder.id;
@@ -48,4 +51,26 @@ public class User implements Serializable {
         private String email;
         private UserDetails details;
     }    
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getNick() {
+        return nick;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public UserDetails getDetails() {
+        return details;
+    }
+    
+    
 }
