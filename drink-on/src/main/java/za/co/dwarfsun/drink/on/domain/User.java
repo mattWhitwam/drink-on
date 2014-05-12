@@ -37,7 +37,9 @@ public class User implements Serializable {
     
     private User(Builder builder) {
         id = builder.id;
-        
+        nick = builder.nick;
+        email = builder.email;
+        details = builder.details;
     }
     
     public static class Builder {
