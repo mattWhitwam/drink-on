@@ -35,4 +35,15 @@ public class User implements Serializable {
     @Embedded
     private UserDetails details;
     
+    private User(Builder builder) {
+        id = builder.id;
+        
+    }
+    
+    public static class Builder {
+        private Long id;
+        private String nick;
+        private String email;
+        private UserDetails details;
+    }    
 }
