@@ -16,7 +16,7 @@ import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
-import org.springframework.stereotype.Component;
+//import org.springframework.stereotype.Component;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -27,7 +27,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @ComponentScan("za.co.dwarfsun.drink.on")
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "za.co.dwarfsun.drink.on.respository")
+@EnableJpaRepositories(basePackages = "za.co.dwarfsun.drink.on.repository")
 public class ConnectionConfig {
 
     @Bean
