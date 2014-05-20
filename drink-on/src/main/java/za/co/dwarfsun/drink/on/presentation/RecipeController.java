@@ -11,6 +11,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import za.co.dwarfsun.drink.on.domain.Recipe;
 import za.co.dwarfsun.drink.on.services.RecipeByDateService;
@@ -22,7 +23,8 @@ import za.co.dwarfsun.drink.on.services.RecipeByDateService;
 public class RecipeController {
     @Autowired
     private RecipeByDateService recipeByDateService;
-    @RequestMapping(value="newrecipes")
+    //with value="" the / is not mandatory but denotes root, can use "/" to map code to root
+    @RequestMapping(value="/newrecipes",method = RequestMethod.GET) //method defaults to GET anyway
     @ResponseBody
     public Recipe getRecipe() {
         Recipe r = null;
