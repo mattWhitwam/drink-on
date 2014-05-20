@@ -7,6 +7,7 @@
 package za.co.dwarfsun.drink.on.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -16,6 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -23,6 +25,8 @@ import javax.persistence.OneToOne;
  */
 @Entity
 public class Recipe implements Serializable {
+    @OneToMany(mappedBy = "recipe")
+    private List<RecipeRating> recipeRatings;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,12 +34,17 @@ public class Recipe implements Serializable {
     
     private String title;
     private String dsc;
-    
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private final Date dtAdded;
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="id")
     List<RecipeLine> line;
     @OneToOne
     private ImageFile img;
+
+    public Recipe() {
+        dtAdded = new Date();
+    }
 
     public String getTitle() {
         return title;

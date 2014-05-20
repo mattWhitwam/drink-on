@@ -7,7 +7,9 @@
 package za.co.dwarfsun.drink.on.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Embeddable;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -21,4 +23,11 @@ public class UserDetails implements Serializable{
     private String faxNum;
     private int age;
     private char gender;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dtJoined;
+
+    public UserDetails() {
+        dtJoined = new Date();
+    }
+    
 }

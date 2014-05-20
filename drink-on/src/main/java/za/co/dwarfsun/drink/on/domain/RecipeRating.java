@@ -7,29 +7,35 @@
 package za.co.dwarfsun.drink.on.domain;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-//import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
 
 /**
  *
  * @author Matt
  */
 @Entity
-public class Ingredient implements Serializable {
+public class RecipeRating implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String name;
-    private String measure;
-    @OneToMany
-    private List<Ingredient> substitutes;
+    private double rating;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private final Date dtRated;
+    @ManyToOne
+    private User usr;
+    @ManyToOne
+    private Recipe recipe;
+
+    public RecipeRating() {
+        dtRated = new Date();
+    }
 
     public Long getId() {
         return id;
@@ -39,28 +45,28 @@ public class Ingredient implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public double getRating() {
+        return rating;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setRating(double rating) {
+        this.rating = rating;
     }
 
-    public String getMeasure() {
-        return measure;
+    public User getUsr() {
+        return usr;
     }
 
-    public void setMeasure(String measure) {
-        this.measure = measure;
+    public void setUsr(User usr) {
+        this.usr = usr;
     }
 
-    public List<Ingredient> getSubstitutes() {
-        return substitutes;
+    public Recipe getRecipe() {
+        return recipe;
     }
 
-    public void setSubstitutes(List<Ingredient> substitutes) {
-        this.substitutes = substitutes;
+    public void setRecipe(Recipe recipe) {
+        this.recipe = recipe;
     }
 
     @Override
@@ -73,10 +79,10 @@ public class Ingredient implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Ingredient)) {
+        if (!(object instanceof RecipeRating)) {
             return false;
         }
-        Ingredient other = (Ingredient) object;
+        RecipeRating other = (RecipeRating) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -85,7 +91,7 @@ public class Ingredient implements Serializable {
 
     @Override
     public String toString() {
-        return "za.co.dwarfsun.drink.on.domain.Ingredient[ id=" + id + " ]";
+        return "za.co.dwarfsun.drink.on.domain.RecipeRating[ id=" + id + " ]";
     }
     
 }

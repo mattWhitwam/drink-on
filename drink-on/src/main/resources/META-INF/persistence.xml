@@ -6,6 +6,7 @@
     <class>za.co.dwarfsun.drink.on.domain.RecipeLine</class>
     <class>za.co.dwarfsun.drink.on.domain.Ingredient</class>
     <class>za.co.dwarfsun.drink.on.domain.ImageFile</class>
+    <class>za.co.dwarfsun.drink.on.domain.RecipeRating</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/sample"/>
